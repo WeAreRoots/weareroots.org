@@ -118,6 +118,7 @@ data:
     domainName: "skg.localhost"
     calendarUrl: "37olphqpei4cvuqn3a2ik462sk@group.calendar.google.com"
     calendarApiKey: "AIzaSyBUra36HNU0Gjw3ywcGNSLDbpzubHY516U"
+    lang: "gr"
     og:
       title: "Thessaloniki Grassroot Communities"
       siteName: "thessact"

@@ -54,6 +54,7 @@ Home.prototype._fetchCommunities = function (req, res, next) {
  * @param {Object} res The response Object.
  */
 Home.prototype._useIndex = function(req, res) {
+  req.i18n.setLocale(req.city.lang);
 
   res.render('city/index', {
     og: null, // title, site_name, url, description, image, appId, type
