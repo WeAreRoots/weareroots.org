@@ -3,6 +3,7 @@
 //-
 
 extends layout/city
+include ../mixins/navbar.mix.jade
 
 block content
 
@@ -12,6 +13,7 @@ block content
         div.jumbotron.text-center.city-image-wrapper
           img(src="/assets/header-city.png").city-image
           div.city-image-gradient
+          //- mixin navbarFixed
           div.navbar.navbar-transparent
             div.container
               div.navbar-header
@@ -21,7 +23,7 @@ block content
                   span.icon-bar
                   span.icon-bar
               div.navbar-collapse.collapse
-                ul.nav.navbar-nav
+                ul.nav.navbar-nav.nav-transparent
                   li.active
                     a(href="#calendar") #{ __('front-nav-calendar') }
                   li
@@ -31,12 +33,9 @@ block content
           div.container
             div.row
               div.col-lg-6.col-lg-offset-3
-                div.logo-wrapper
-                  img(src="/img/logo-roots.svg", width="180px")
                 div.city-name
-                  h2 THESSALONIKI
-                div.city-description
-                  h3 #{ __('front-tagline') }
+                  h1 THESSALONIKI
+                  p.lead #{ __('front-tagline') }
                 div.social-share
                   ul.nav
                     li(style="margin-top:-7px;")
@@ -46,15 +45,20 @@ block content
                     li
                       div(data-action="share", data-annotation="bubble", data-href="http://#{ city.hostname }").g-plus
 
-  div.city-events
+  div.city-events#calendar
     div.container
       div.row
         div.col-lg-8.calendar-title
           h2 #{ __('front-calendar-title') }
-          p.subtle-note #{ __('front-calendar-links') } Google Calendar, RSS, iCal
+          p.subtle-note #{ __('front-calendar-links') }
+            a(href="https://www.google.com/calendar/embed?src=37olphqpei4cvuqn3a2ik462sk%40group.calendar.google.com&ctz=Europe/Athens") Google Calendar
+            |,&nbsp;
+            a(href="https://www.google.com/calendar/feeds/37olphqpei4cvuqn3a2ik462sk@group.calendar.google.com/public/basic") RSS
+            |,&nbsp;
+            a(href="https://www.google.com/calendar/ical/37olphqpei4cvuqn3a2ik462sk@group.calendar.google.com/public/basic.ics") iCal
         div.col-lg-4
-          h2.submit-event
-            a(href="/submit-event/")
+          div.submit-event-wrapper
+            a(href="/submit-event/").submit-event
               img(src="/img/submit-event.png")
               | &nbsp;#{ __('front-calendar-howtosubmit') }
     div#agenda-items.container.calendar-items-block
@@ -83,7 +87,7 @@ block content
             div.google-calendar-icons
 
 
-  div.city-communities
+  div.city-communities#communities
     div.container
       div.row
         div.col-lg-12
@@ -104,9 +108,9 @@ block content
               div.col-lg-7
                 div.community-details
                   h4.community-meetup-frequency #{ community.period }
-                  h5.community-details-subtitle #{ __('front-communities-whatwedo') }
+                  h4.community-details-subtitle #{ __('front-communities-whatwedo') }
                   p.community-details-subcontent #{ community.description }
-                  h5.community-details-subtitle #{ __('front-communities-ourmaintainers') }
+                  h4.community-details-subtitle #{ __('front-communities-ourmaintainers') }
                   p.community-details-subcontent
                     ul.community-maintainers
                       each maintainer, index in community.maintainers
@@ -119,7 +123,7 @@ block content
                             a(href="#{ maintainer.website }") #{ maintainer.name }
                           else
                             | #{ maintainer.name }
-                  h5.community-details-subtitle #{ __('front-communities-learnmore') }
+                  h4.community-details-subtitle #{ __('front-communities-learnmore') }
                   p.community-details-subcontent
                     a(href="#{ community.website }", target="_blank") #{ community.website }
           hr

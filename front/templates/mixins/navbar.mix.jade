@@ -1,0 +1,20 @@
+mixin navbarFixed
+  nav.navbar.navbar-white.navbar-fixed-top(role="navigation")
+    div.container
+      div.navbar-header
+        button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+      div.navbar-collapse.collapse
+        div.navbar-brand-wrapper
+          div.navbar-brand.pull-right
+            img(src="/img/logo-roots.svg").brand-image
+        ul.nav.navbar-nav.nav-white
+          li.active
+            a(href="#calendar") #{ __('Calendar') }
+          li
+            a(href="#communities") #{ __('Communities') }
+          li
+            a(href="#contact") #{ __('Contact') }
