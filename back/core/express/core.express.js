@@ -9,6 +9,7 @@ var vhost = require('vhost');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var errorhandler = require('errorhandler');
+var I18n = require('i18n-2');
 
 var webserver = require('../webserver.core');
 var SocketServer = require('../websocketServer.core');
@@ -96,6 +97,16 @@ ExpressApp.prototype.init = BPromise.method(function(opts) {
       this.app.use(vhost('athtech.org', appApi));
       this.app.use(vhost('*.athtech.org', appApi));
     }
+
+    I18n.expressBind(this.app, {
+      locales: ['en', 'gr'],
+      cookieName: 'locale's
+    });
+
+    this.app.use(function (req, res, next) {
+      req.i18n.setLocaleFromQuery();
+      next();
+    });
 
     // ultimate fallback if no vhost triggers, use main web app
     this.app.use(appWebserver);
