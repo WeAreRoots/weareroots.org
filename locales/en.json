@@ -1,5 +1,13 @@
 {
-  "Calendar": "Agenda",
-  "Communities": "Communities",
-  "Contact": "Contact"
+  "front-nav-calendar": "Agenda",
+  "front-nav-communities": "Communities",
+  "front-nav-contact": "Contact",
+  "front-tagline": "The active communities of the city and their work",
+  "front-calendar-title": "Calendar of upcoming events",
+  "front-calendar-links": "view on",
+  "front-calendar-howtosubmit": "How to submit an event",
+  "front-communities-title": "Communities of the city",
+  "front-communities-whatwedo": "What we do",
+  "front-communities-ourmaintainers": "Our maintainers",
+  "front-communities-learnmore": "Learn more about us"
 }
