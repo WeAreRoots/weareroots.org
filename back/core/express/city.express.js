@@ -7,6 +7,7 @@ var cip = require('cip');
 var express = require('express');
 var flash = require('connect-flash');
 var BPromise = require('bluebird');
+var I18n = require('i18n-2');
 
 var log = require('logg').getLogger('app.core.express.City');
 
@@ -34,6 +35,16 @@ var CityExpress = module.exports = cip.extendSingleton(function () {
  */
 CityExpress.prototype.init = BPromise.method(function(opts) {
   log.info('init() :: Initializing webserver...');
+
+  I18n.expressBind(this.app, {
+    locales: ['en', 'gr'],
+    cookieName: 'locale'
+  });
+
+  this.app.use(function (req, res, next) {
+    req.i18n.setLocaleFromQuery();
+    next();
+  });
 
   this.app.set('views', path.join(__dirname + '/../../../front/templates/'));
   this.app.set('view engine', 'jade');

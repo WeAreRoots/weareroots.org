@@ -100,16 +100,6 @@ ExpressApp.prototype.init = BPromise.method(function(opts) {
       this.app.use(vhost('www.thesact.gr', appApi));
     }
 
-    I18n.expressBind(this.app, {
-      locales: ['en', 'gr'],
-      cookieName: 'locale'
-    });
-
-    this.app.use(function (req, res, next) {
-      req.i18n.setLocaleFromQuery();
-      next();
-    });
-
     // ultimate fallback if no vhost triggers, use main web app
     this.app.use(appWebserver);
 
