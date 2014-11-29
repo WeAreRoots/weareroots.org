@@ -1,5 +1,15 @@
 // Frontpage specific styles
 
+p {
+  a {
+    color: #ccc;
+  }
+  a:focus,
+  a:hover {
+    color: $main-color;
+  }
+}
+
 .city-header {
 
   // background: url(/assets/header-city.png);
