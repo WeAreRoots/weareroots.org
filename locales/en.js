@@ -1,5 +1,5 @@
 {
-  "Agenda": "Agenda",
+  "Calendar": "Agenda",
   "Communities": "Communities",
   "Contact": "Contact"
 }
