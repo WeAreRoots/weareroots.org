@@ -25,11 +25,11 @@ block content
               div.navbar-collapse.collapse
                 ul.nav.navbar-nav.nav-transparent
                   li.active
-                    a(href="#calendar") #{ __('Calendar') }
+                    a(href="#calendar") #{ __('front-nav-calendar') }
                   li
-                    a(href="#communities") #{ __('Communities') }
+                    a(href="#communities") #{ __('front-nav-communities') }
                   li
-                    a(href="#contact") #{ __('Contact') }
+                    a(href="#contact") #{ __('front-nav-contact') }
           div.container
             div.row
               div.col-lg-6.col-lg-offset-3
@@ -38,7 +38,7 @@ block content
                 div.city-name
                   h2 THESSALONIKI
                 div.city-description
-                  h3 This is an open website about the community of Thessaloniki's developers and techies. Meet the community and find out about upcoming events and meetups.
+                  h3 #{ __('front-tagline') }
                 div.social-share
                   ul.nav
                     li(style="margin-top:-7px;")
@@ -52,8 +52,8 @@ block content
     div.container
       div.row
         div.col-lg-8.calendar-title
-          h2 Calendar of upcoming events
-          p.subtle-note view on&nbsp;
+          h2 #{ __('front-calendar-title') }
+          p.subtle-note #{ __('front-calendar-links') }
             a(href="https://www.google.com/calendar/embed?src=37olphqpei4cvuqn3a2ik462sk%40group.calendar.google.com&ctz=Europe/Athens") Google Calendar
             |,&nbsp;
             a(href="https://www.google.com/calendar/feeds/37olphqpei4cvuqn3a2ik462sk@group.calendar.google.com/public/basic") RSS
@@ -63,12 +63,11 @@ block content
           div.submit-event-wrapper
             a(href="/submit-event/").submit-event
               img(src="/img/submit-event.png")
-              | How to submit an event
+              | &nbsp;#{ __('front-calendar-howtosubmit') }
     div#agenda-items.container.calendar-items-block
       div.row
         div.col-lg-10.col-md-10
           img(src="/img/loader-bar.gif")
-
 
     div#agenda-tpl.hide
       div.col-md-4.col-lg-4.calendar-item-outer
@@ -95,7 +94,7 @@ block content
     div.container
       div.row
         div.col-lg-12
-          h2.communities-title Communities of the city
+          h2.communities-title #{ __('front-communities-title') }
     div.container
       div.row
         div.col-lg-10.communities-block
@@ -112,9 +111,9 @@ block content
               div.col-lg-7
                 div.community-details
                   h4.community-meetup-frequency #{ community.period }
-                  h5.community-details-subtitle What we do
+                  h5.community-details-subtitle #{ __('front-communities-whatwedo') }
                   p.community-details-subcontent #{ community.description }
-                  h5.community-details-subtitle Our maintainers
+                  h5.community-details-subtitle #{ __('front-communities-ourmaintainers') }
                   p.community-details-subcontent
                     ul.community-maintainers
                       each maintainer, index in community.maintainers
@@ -127,7 +126,7 @@ block content
                             a(href="#{ maintainer.website }") #{ maintainer.name }
                           else
                             | #{ maintainer.name }
-                  h5.community-details-subtitle Learn more about us
+                  h5.community-details-subtitle #{ __('front-communities-learnmore') }
                   p.community-details-subcontent
                     a(href="#{ community.website }", target="_blank") #{ community.website }
           hr

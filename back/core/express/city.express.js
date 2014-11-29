@@ -37,8 +37,9 @@ CityExpress.prototype.init = BPromise.method(function(opts) {
   log.info('init() :: Initializing webserver...');
 
   I18n.expressBind(this.app, {
+    extension: '.json',
     locales: ['en', 'gr'],
-    cookieName: 'locale'
+    cookieName: 'locale',
   });
 
   this.app.use(function (req, res, next) {
