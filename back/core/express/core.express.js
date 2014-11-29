@@ -100,7 +100,7 @@ ExpressApp.prototype.init = BPromise.method(function(opts) {
 
     I18n.expressBind(this.app, {
       locales: ['en', 'gr'],
-      cookieName: 'locale's
+      cookieName: 'locale'
     });
 
     this.app.use(function (req, res, next) {
