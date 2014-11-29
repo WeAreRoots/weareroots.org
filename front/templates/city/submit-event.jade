@@ -13,7 +13,7 @@ block content
           h1 #{ __('submitevent-title') }
     div.row
       div.col-lg-8
-        p #{ __('submitevent-using', city.hostname) }
+        p #{ __('submitevent-using', city.hostname) }&nbsp;
           a(href="https://www.google.com/calendar/embed?src=#{ city.calendarUrl }&ctz=Europe/Athens") #{ __('submitevent-Public Google Calendar') }
           | &nbsp; #{ __('submitevent-using-pt2') }
         p #{ __('submitevent-instructions', city.hostname) }
@@ -43,6 +43,7 @@ block content
         p #{ __('submitevent-email-paste') }
         pre #{ city.calendarUrl }
         p #{ __('submitevent-hard-remember', city.hostname) }
-        p #{ __('submitevent-done') }
+        p!= __('submitevent-done')
+          | &nbsp;
           a(href="http://#{ city.hostname }") #{ city.hostname }
           | &nbsp; website.
