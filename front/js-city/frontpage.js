@@ -6,7 +6,7 @@ var calendarth = require('calendarth');
 
 var util = require('./util');
 
-var Front = module.exports = function() {
+var Front = module.exports = function () {
   this.$agendaContainer = null;
   this.$agendaItem = null;
   this.$error = null;
@@ -19,7 +19,7 @@ Front.MAX_EVENTS_SHOW = 10;
  * Initialize the frontpage view.
  *
  */
-Front.prototype.init = function() {
+Front.prototype.init = function () {
   this.$agendaContainer = $('#agenda-items');
   this.$agendaItem = $('#agenda-tpl');
   this.$error = $('#agenda-error');
@@ -31,6 +31,8 @@ Front.prototype.init = function() {
 
   this.calendarth.fetch(this._handleCalResult.bind(this));
   this._fixPanels();
+
+  $('body').on('click', '.show-map', this._showMapModal);
 };
 
 /**
@@ -38,9 +40,9 @@ Front.prototype.init = function() {
  *
  * @private
  */
-Front.prototype._fixPanels = function() {
+Front.prototype._fixPanels = function () {
   var max = 0;
-  $('.panel-info').each(function() {
+  $('.panel-info').each(function () {
     var currentHeight = $(this).height();
     if (currentHeight > max) {
       max = currentHeight;
@@ -56,7 +58,7 @@ Front.prototype._fixPanels = function() {
  * @param {Object=} data The calendar data object.
  * @private
  */
-Front.prototype._handleCalResult = function(err, data) {
+Front.prototype._handleCalResult = function (err, data) {
   this.$agendaContainer.empty();
   if (err) {
     this.$agendaContainer.append(this.$error.clone().removeClass('hide'));
@@ -66,7 +68,7 @@ Front.prototype._handleCalResult = function(err, data) {
   var meetups = [];
   var displayed = 0;
   var elements = '<div class="row">';
-  data.items.forEach(function(item) {
+  data.items.forEach(function (item) {
     if (displayed >= Front.MAX_EVENTS_SHOW) {
       return;
     }
@@ -96,7 +98,7 @@ Front.prototype._handleCalResult = function(err, data) {
  * @return {string} The html representation.
  * @private
  */
-Front.prototype._assignValues = function($item, item) {
+Front.prototype._assignValues = function ($item, item) {
   $item.removeClass('hide');
   var truncatedEventTitle = util.truncateText(item.summary, 35);
   $item.find('h3.event-title').text(truncatedEventTitle);
@@ -110,7 +112,6 @@ Front.prototype._assignValues = function($item, item) {
   $dateEl.find('span.month').text(formatedDate.monthStr);
 
   $item.find('span.tpl-full-time').text(util.formatDate(item.start, item.end));
-
 
   var location = '';
   var truncatedVenue = util.truncateText(data.venue, 40);
@@ -153,6 +154,11 @@ Front.prototype._assignValues = function($item, item) {
     $item.find('.agenda-tpl-language').addClass('hide');
   }
 
+  if(item.location)
+    $item.find('.show-map').attr('data-location', item.location);
+  else
+    $item.find('.show-map').addClass('hide');
+
   var eventUrl = this.calendarth.getEventUrl(item);
   $item.find('.addcal').attr('href', eventUrl);
   $item.find('.viewcal').attr('href', item.htmlLink);
@@ -171,7 +177,7 @@ Front.prototype._assignValues = function($item, item) {
  *   language {?string} The event language.
  * @private
  */
-Front.prototype._parseDesc = function(descr) {
+Front.prototype._parseDesc = function (descr) {
   var out = {
     venue: null,
     infoUrl: null,
@@ -184,7 +190,7 @@ Front.prototype._parseDesc = function(descr) {
     return out;
   }
   var lines = descr.split('\n');
-  lines.forEach(function(line) {
+  lines.forEach(function (line) {
     if (!line.length) {
       return;
     }
@@ -197,27 +203,76 @@ Front.prototype._parseDesc = function(descr) {
     var key = line.substr(0, splitPos).toLowerCase().trim();
     var value = line.substr(splitPos + 1).trim();
 
-    switch(key) {
-    case 'venue':
-      out.venue = value;
-      break;
-    case 'info':
-      out.infoUrl = value;
-      break;
-    case 'map':
-      out.mapUrl = value;
-      break;
-    case 'about':
-      out.about = value;
-      break;
-    case 'language':
-      out.language = value;
-      break;
-    default:
-      out.rest += line + '<br />';
-      break;
+    switch (key) {
+      case 'venue':
+        out.venue = value;
+        break;
+      case 'info':
+        out.infoUrl = value;
+        break;
+      case 'map':
+        out.mapUrl = value;
+        break;
+      case 'about':
+        out.about = value;
+        break;
+      case 'language':
+        out.language = value;
+        break;
+      default:
+        out.rest += line + '<br />';
+        break;
     }
   }, this);
 
   return out;
+};
+
+
+/**
+ * Display modal with maps.
+ *
+ * @private
+ */
+Front.prototype._showMapModal = function () {
+  var venueName = $(this).parent().prev().find('.tpl-venue-copy').text();
+  var canonicalAddress = $(this).attr('data-location');
+  var geocodeEndpoint = 'https://maps.googleapis.com/maps/api/geocode/json?address=' +
+                        encodeURIComponent(canonicalAddress);
+
+  var that = this;
+  /**
+   * @todo: Add a loader/spinner here
+   */
+  $.get(geocodeEndpoint, function (data) {
+    if (data.results.length) {
+      var target = data.results[0];
+      var center = new google.maps.LatLng(target.geometry.location.lat, target.geometry.location.lng);
+
+      var mapOptions = {
+        zoom: 16,
+        center: center
+      };
+
+      var map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+
+      var marker = new google.maps.Marker({
+        position: center,
+        map: map,
+        title: venueName + ' - ' + canonicalAddress
+      });
+
+    }
+
+    /**
+     * Open modal and do super duper hack
+     * @see https://stackoverflow.com/questions/11742839/showing-a-google-map-in-a-modal-created-with-twitter-bootstrap/11743005
+     */
+    $('#findParking').modal({}).on('shown.bs.modal', function () {
+      $(this).find('.venue').text(venueName + ' - ' + canonicalAddress);
+      google.maps.event.trigger(map, 'resize');
+      map.setCenter(center);
+    });
+  });
 };
