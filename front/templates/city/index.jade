@@ -33,12 +33,9 @@ block content
           div.container
             div.row
               div.col-lg-6.col-lg-offset-3
-                div.logo-wrapper
-                  img(src="/img/logo-roots.svg", width="180px")
                 div.city-name
-                  h2 THESSALONIKI
-                div.city-description
-                  h3 #{ __('front-tagline') }
+                  h1 THESSALONIKI
+                  p.lead #{ __('front-tagline') }
                 div.social-share
                   ul.nav
                     li(style="margin-top:-7px;")
@@ -111,9 +108,9 @@ block content
               div.col-lg-7
                 div.community-details
                   h4.community-meetup-frequency #{ community.period }
-                  h5.community-details-subtitle #{ __('front-communities-whatwedo') }
+                  h4.community-details-subtitle #{ __('front-communities-whatwedo') }
                   p.community-details-subcontent #{ community.description }
-                  h5.community-details-subtitle #{ __('front-communities-ourmaintainers') }
+                  h4.community-details-subtitle #{ __('front-communities-ourmaintainers') }
                   p.community-details-subcontent
                     ul.community-maintainers
                       each maintainer, index in community.maintainers
@@ -126,7 +123,7 @@ block content
                             a(href="#{ maintainer.website }") #{ maintainer.name }
                           else
                             | #{ maintainer.name }
-                  h5.community-details-subtitle #{ __('front-communities-learnmore') }
+                  h4.community-details-subtitle #{ __('front-communities-learnmore') }
                   p.community-details-subcontent
                     a(href="#{ community.website }", target="_blank") #{ community.website }
           hr
