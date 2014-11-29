@@ -93,16 +93,9 @@ p {
   margin-left: 10px;
 }
 
-h2.submit-event {
-  font-family: $font-content;
-  font-size: 18px;
-  color: #888;
-  text-transform: uppercase;
-  background: #fff;
-  border: 1px solid #e9eaec;
-  border-radius: 40px;
-  margin-right: 20px; // review this rule later
+.submit-event-wrapper {
   padding: 0;
+  margin-top: 20px;
 
   a {
     color: #888;
@@ -111,6 +104,31 @@ h2.submit-event {
   a:hover {
     color: $main-color;
     text-decoration: none;
+  }
+}
+
+.submit-event {
+  font-family: $font-content;
+  font-size: 18px !important;
+  color: #888;
+  text-transform: uppercase;
+  background: #fff;
+  border: 1px solid #e9eaec;
+  border-radius: 40px;
+  padding: 20px 20px 25px 0;
+
+  a {
+    color: #888;
+  }
+  a:focus,
+  a:hover {
+    color: $main-color;
+    text-decoration: none;
+  }
+
+  img {
+    margin-right: 10px;
+    // padding: 0;
   }
 }
 
