@@ -28,6 +28,7 @@ City.Schema = {
   headerTitle: {type: String, required: true, trim: true},
   hostname: {type: String, required: true, trim: true},
   domainName: {type: String, required: true, trim: true},
+  lang: {type: String, default: 'en'},
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: Model.Collection.USER,
