@@ -17,6 +17,7 @@ var socketServer = SocketServer.getInstance();
 var globals = require('../globals');
 var ExpressCity = require('./city.express');
 var ExpressWebsite = require('./website.express');
+var AuthMidd = require('../../middleware/auth.midd');
 
 var log = require('logg').getLogger('app.core.express');
 
@@ -49,13 +50,12 @@ ExpressApp.prototype.init = BPromise.method(function(opts) {
   // initialize webserver
   webserver.init(this.app);
 
+  var authMidd = new AuthMidd();
+
   var boot = [
     this.expressWebsite.init(opts),
+    this.expressCity.init(opts),
   ];
-
-  if (config.usevhosts) {
-    boot.push(this.expressCity.init(opts));
-  }
 
   return BPromise.all(boot)
   .bind(this)
@@ -78,6 +78,11 @@ ExpressApp.prototype.init = BPromise.method(function(opts) {
     // remove x-powered-by header
     this.app.set('x-powered-by', false);
 
+    // Require Basic auth if on heroku
+    if (globals.isHeroku) {
+      this.app.use(authMidd.basicAuth);
+    }
+
     this.app.use(cookieParser());
     this.app.use(bodyParser.urlencoded({extended: false}));
     this.app.use(bodyParser.json());
@@ -92,10 +97,7 @@ ExpressApp.prototype.init = BPromise.method(function(opts) {
       socketServer.listen(globals.WebsocketNamespace.API);
       this.app.use(vhost(config.hostname.city, appApi));
       // SKIN it for now..
-      this.app.use(vhost('skgtech.io', appApi));
-      this.app.use(vhost('*.skgtech.io', appApi));
-      this.app.use(vhost('athtech.org', appApi));
-      this.app.use(vhost('*.athtech.org', appApi));
+      this.app.use(vhost('www.thesact.gr', appApi));
     }
 
     I18n.expressBind(this.app, {
