@@ -1,3 +1,5 @@
 {
-  "Hello": "Hello"
+  "Agenda": "Agenda",
+  "Communities": "Communities",
+  "Contact": "Contact"
 }
