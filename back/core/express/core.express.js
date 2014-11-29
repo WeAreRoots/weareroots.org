@@ -9,6 +9,7 @@ var vhost = require('vhost');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var errorhandler = require('errorhandler');
+var I18n = require('i18n-2');
 
 var webserver = require('../webserver.core');
 var SocketServer = require('../websocketServer.core');
