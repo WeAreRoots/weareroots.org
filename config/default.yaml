@@ -113,7 +113,7 @@ websocket:
 data:
   city:
     - name: "Thessaloniki"
-    headerTitle: "ThesAct"
+    headerTitle: "ΘΕΣΣΑΛΟΝΙΚΗ"
     hostname: "skg.localhost"
     domainName: "skg.localhost"
     calendarUrl: "37olphqpei4cvuqn3a2ik462sk@group.calendar.google.com"
