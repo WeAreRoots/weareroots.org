@@ -25,7 +25,7 @@ logger:
 data:
   city:
     - name: "Thessaloniki"
-    headerTitle: "ThesAct"
+    headerTitle: "ΘΕΣΣΑΛΟΝΙΚΗ"
     hostname: "www.thesact.gr"
     domainName: "thesact.gr"
 #    Thessact GCalendar keys
@@ -33,7 +33,8 @@ data:
 #    calendarApiKey: "AIzaSyBUra36HNU0Gjw3ywcGNSLDbpzubHY516U"
     calendarUrl: "2ul10sd9g30mnk1vpmcnnp5qv4@group.calendar.google.com"
     calendarApiKey: "AIzaSyC75rnKyEkGxmVyG7hlqFicwPBgDmQLN_w"
-    lang: "en"
+    lang: "gr"
+    calendarStyle: "roots"
     coverImage: "/assets/city-headers/thessaloniki.jpg"
     curators:
       - name: "Thanasis Polychronakis"
