@@ -1,0 +1,26 @@
+//- Dashboard file
+//-
+//-
+
+extends layout/dashboard
+
+block content
+  h1.page-header Dashboard
+  h2.sub-header
+    span.glyphicon.glyphicon-globe
+    | &nbsp;Communities
+  table.table.table-striped.table-bordered
+    thead
+      tr
+        th Community Name
+        th Manage
+    tbody
+      each community in communities
+        tr
+          td #{ community.name }
+          td
+            div.btn-group.btn-group-xs
+              a(href="/communities/#{ community._id }/edit", type="button").btn.btn-default
+                span.glyphicon.glyphicon-pencil Edit
+              a(href="/communities/#{ community._id }/delete",type="button").btn.btn-default
+                span.glyphicon.glyphicon-remove Delete

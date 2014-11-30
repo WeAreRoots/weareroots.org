@@ -116,7 +116,7 @@ Login.prototype._performLogin = function(req, res, udo) {
       });
     }
     log.finest('_performLogin() :: Done', udo.email);
-    res.redirect('/');
+    res.redirect('/dashboard');
   });
 };
 
