@@ -1,0 +1,38 @@
+extends core
+
+block layout
+  nav(role="navigation").navbar.navbar-inverse.navbar-fixed-top
+    div.container-fluid
+      div.navbar-header
+        button(type="button",data-toggle="collapse", data-target="#navbar", aria-expanded="false", aria-controls="navbar").navbar-toggle.collapsed
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a(href="#").navbar-brand #{ city.name }
+      div(id="navbar").navbar-collapse.collapse
+        ul.nav.navbar-nav.navbar-right
+          li
+            a(href="#") Dashboard
+          li
+            a(href="#") Settings
+          li
+            a(href="#") Profile
+          li
+            a(href="#") Help
+
+  div.container-fluid
+    div.row
+      div.col-sm-3.col-md-2.sidebar
+        ul.nav.nav-sidebar
+          li.active
+            a(href="#") Overview
+              span.sr-only (current)
+          li
+            a(href="#") Reports
+          li
+            a(href="#") Analytics
+          li
+            a(href="#") Export
+      div.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        block content
