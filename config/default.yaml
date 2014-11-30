@@ -116,8 +116,11 @@ data:
     headerTitle: "ΘΕΣΣΑΛΟΝΙΚΗ"
     hostname: "skg.localhost"
     domainName: "skg.localhost"
-    calendarUrl: "37olphqpei4cvuqn3a2ik462sk@group.calendar.google.com"
-    calendarApiKey: "AIzaSyBUra36HNU0Gjw3ywcGNSLDbpzubHY516U"
+#    Thessact GCalendar keys
+#    calendarUrl: "37olphqpei4cvuqn3a2ik462sk@group.calendar.google.com"
+#    calendarApiKey: "AIzaSyBUra36HNU0Gjw3ywcGNSLDbpzubHY516U"
+    calendarUrl: "2ul10sd9g30mnk1vpmcnnp5qv4@group.calendar.google.com"
+    calendarApiKey: "AIzaSyC75rnKyEkGxmVyG7hlqFicwPBgDmQLN_w"
     lang: "gr"
     og:
       title: "Thessaloniki Grassroot Communities"
