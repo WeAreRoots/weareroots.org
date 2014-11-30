@@ -34,6 +34,13 @@ data:
     calendarUrl: "2ul10sd9g30mnk1vpmcnnp5qv4@group.calendar.google.com"
     calendarApiKey: "AIzaSyC75rnKyEkGxmVyG7hlqFicwPBgDmQLN_w"
     lang: "en"
+    curators:
+      - name: "Thanasis Polychronakis"
+      email: "thanpolas@gmail.com"
+      - name: "Theodore Keloglou"
+      email: "theodorekeloglou@gmail.com"
+      - name: "Kostas Bariotis"
+      email: "konmpar@gmail.com"
     og:
       title: "Thessaloniki Grassroot Communities"
       siteName: "thessact"
