@@ -60,6 +60,11 @@ User.Schema = {
       User.Role.USER,
     ],
   },
+  // which city this user curates
+  cityCurator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: Model.Collection.CITY,
+  },
 
   emailConfirmation: {
     key: {type: String, default: helpers.generateRandomString},

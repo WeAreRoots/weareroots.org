@@ -11,6 +11,7 @@ module.exports = function(grunt) {
     cities: {
       files: [{
         'front/static/styles/city.src.css': 'front/styles-city/boot.scss',
+        'front/static/styles/dashboard.src.css': 'front/styles-city/dashboard.scss',
       }]
     },
   });

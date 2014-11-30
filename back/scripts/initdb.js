@@ -27,6 +27,9 @@ var Initdb = module.exports = cip.extend(function () {
   this.citySkg = null;
   this.cityAth = null;
 
+  /** @type {mongoose.Document} City curators */
+  this.curatorSkg = null;
+
   /** @type {?Object} Communities to populate */
   this.communities = null;
 
@@ -38,7 +41,7 @@ var Initdb = module.exports = cip.extend(function () {
 });
 
 /**
- * Start DB population, will not overwrite existing records.
+ * Start DB population, will nuke existing records.
  *
  * @return {Promise} A Promise.
  */
@@ -55,6 +58,7 @@ Initdb.prototype.start = Promise.method(function() {
     .then(this.nukeDb)
     .then(this._createAdminUser)
     .then(this._createCities)
+    .then(this._createCurators)
     .then(this._createTogether)
     .then(this._createCommunities);
 });
@@ -135,19 +139,24 @@ Initdb.prototype._createCities = Promise.method(function () {
 });
 
 /**
- * Create the together events.
+ * Create city curators
  *
- * @return {Promise} A promise.
+ * @return {Promise} A Promise.
  */
-Initdb.prototype._createTogether = Promise.method(function () {
-  log.finer('_createTogether() :: Creating Together events...');
-
-  return Promise.resolve(this.togetherEvents.skg)
+Initdb.prototype._createCurators = Promise.method(function () {
+  log.finer('_createCurators() :: Creating curators');
+  var adminUdo = {
+    email: 'admin@thessaloniki.gr',
+    firstName: 'Thessaloniki',
+    lastName: 'User',
+    password: '123',
+    role: UserEntity.Role.CURATOR,
+    cityCurator: this.citySkg._id,
+  };
+  return this.userEnt.create(adminUdo)
     .bind(this)
-    .map(function (togetherEvent) {
-      togetherEvent.cityOwner = this.citySkg._id;
-      togetherEvent.createdBy = this.adminUdo._id;
-      return this.togetherEnt.create(togetherEvent);
+    .then(function (udo) {
+      this.adminUdo = udo;
     });
 });
 
