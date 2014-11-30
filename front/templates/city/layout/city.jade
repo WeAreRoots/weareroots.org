@@ -23,18 +23,31 @@ block layout
   //- include parts/oldie
   block content
 
-  //- footer#f.footer-actual
-  //-   div.container
-  //-     div.row
-  //-       div.col-lg-6.pull-left
-  //-         p &copy; 2014&nbsp;
-  //-           a(href="https://github.com/WeAreTech/wearetech.io/graphs/contributors") WeAreTech contributors
-  //-           |  source under the&nbsp;
-  //-           a(target="_blank", href="https://github.com/WeAreTech/wearetech.io/blob/master/LICENSE") MPL 2.0 License
-  //-           | .
-  //-         p.license The content property of their respective owners, the rest&nbsp;
-  //-           a(target="_blank", href="http://creativecommons.org/publicdomain/zero/1.0/") Creative Commons CC0
-  //-           | .
-  //-       div.col-lg-4.pull-right
-  //-         p
-  //-           a(href="https://github.com/WeAreTech/wearetech.io", target="_blank") View the source of this site and contribute
+  footer.footer
+    div.container
+      div.row
+        div#contact.col-lg-12.contact
+          if city.curators.length
+            h5 This City is curated by
+            ul
+              each curator in city.curators
+                li.list-unstyled
+                  a(href="mailto:#{ curator.email }") #{ curator.name }
+      div.row
+        div
+          hr
+      div.row.footnotes
+        div.col-lg-8.left-copy
+          p &copy; 2014&nbsp;
+            a(href="https://github.com/WeAreRoots/weareroots.org/graphs/contributors") WeAreRoots contributors,
+            |  source under the&nbsp;
+            a(target="_blank", href="https://github.com/WeAreRoots/weareroots.org/blob/master/LICENSE") MPL 2.0 License
+            | .
+          p.license The content property of their respective owners, the rest&nbsp;
+            a(target="_blank", href="http://creativecommons.org/publicdomain/zero/1.0/") Creative Commons CC0
+            | .
+        div.col-lg-4.contribute-statement
+          p
+            a(href="https://github.com/WeAreRoots/weareroots.org", target="_blank")
+              img(src="/img/github.png").github
+              | View the source of this site and contribute
