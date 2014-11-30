@@ -43,8 +43,6 @@ data:
       appId: ""
       type: "website"
     ga: "UA-41787746-7"
-data:
-  city:
     - name: "Athens"
     headerTitle: "ΑΘΗΝΑ"
     hostname: "ath.thesact.gr"

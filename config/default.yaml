@@ -132,8 +132,6 @@ data:
       appId: ""
       type: "website"
     ga: "xxx"
-data:
-  city:
     - name: "Athens"
     headerTitle: "ΑΘΗΝΑ"
     hostname: "ath.localhost"
