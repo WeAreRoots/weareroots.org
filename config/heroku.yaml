@@ -2,8 +2,8 @@ webserver:
   port: 80
 
 hostname:
-  city: "*.wearetech.io"
-  website: "wearetech.io"
+  city: "*.weareroots.org"
+  website: "weareroots.org"
 
 # Google Analytics key
 ga: "UA-xxxxxx-2"
