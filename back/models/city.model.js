@@ -38,6 +38,15 @@ City.Schema = {
   calendarUrl: {type: String},
   calendarApiKey: {type: String},
   forumUrl: {type: String},
+  curators: [{
+    name: {type: String},
+    email: {type: String},
+  }],
+  coverImage: {type: String},
+  calendarStyle: {
+    type: String,
+    enum: ['roots', 'google'],
+  },
   og: {
     title: {type: String},
     siteName: {type: String},

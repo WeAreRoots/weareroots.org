@@ -88,9 +88,9 @@ script(type="text/javascript").
 script(type="text/javascript").
   var serv = {
     callendarId: '#{ city.calendarUrl }',
-  calendarApiKey: '#{ city.calendarApiKey }'
-  }
-  ;
+    calendarApiKey: '#{ city.calendarApiKey }',
+    calendarStyle: '#{ city.calendarStyle }'
+  };
 
 if glob.env == "development"
   script(type="text/javascript").

@@ -70,14 +70,12 @@ Initdb.prototype.start = Promise.method(function() {
  */
 Initdb.prototype._readDataFiles = Promise.method(function() {
   return Promise.all([
-    file.readYaml(path.join(__dirname, '../datafiles', 'together.yaml')),
     file.readYaml(path.join(__dirname, '../datafiles', 'communities.yaml')),
   ])
     .bind(this)
-    .spread(function (togetherEvents, communities) {
+    .spread(function (communities) {
       this.cities = config.data.city;
       this.communities = communities;
-      this.togetherEvents = togetherEvents;
     });
 });
 
@@ -171,6 +169,9 @@ Initdb.prototype._createCommunities = Promise.method(function () {
   return Promise.all([
     Promise.resolve(this.communities.skg)
       .map(this._createCommunity.bind(this, this.citySkg)),
+    Promise.resolve(this.communities.ath)
+      .map(this._createCommunity.bind(this, this.cityAth)),
+
   ]);
 });
 
