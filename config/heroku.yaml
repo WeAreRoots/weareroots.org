@@ -34,6 +34,7 @@ data:
     calendarUrl: "2ul10sd9g30mnk1vpmcnnp5qv4@group.calendar.google.com"
     calendarApiKey: "AIzaSyC75rnKyEkGxmVyG7hlqFicwPBgDmQLN_w"
     lang: "en"
+    coverImage: "/assets/city-headers/thessaloniki.jpg"
     curators:
       - name: "Thanasis Polychronakis"
       email: "thanpolas@gmail.com"
@@ -58,6 +59,7 @@ data:
     calendarApiKey: "AIzaSyC75rnKyEkGxmVyG7hlqFicwPBgDmQLN_w"
     lang: "gr"
     calendarStyle: "google"
+    coverImage: "/assets/city-headers/athens.jpg"
     og:
       title: "Athens Grassroot Communities"
       siteName: "Athensact"

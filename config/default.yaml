@@ -123,6 +123,7 @@ data:
     calendarApiKey: "AIzaSyC75rnKyEkGxmVyG7hlqFicwPBgDmQLN_w"
     lang: "gr"
     calendarStyle: "roots"
+    coverImage: "/assets/city-headers/thessaloniki.jpg"
     curators:
       - name: "Thanasis Polychronakis"
       email: "thanpolas@gmail.com"
@@ -147,6 +148,7 @@ data:
     calendarApiKey: "AIzaSyC75rnKyEkGxmVyG7hlqFicwPBgDmQLN_w"
     lang: "gr"
     calendarStyle: "google"
+    coverImage: "/assets/city-headers/athens.jpg"
     og:
       title: "Athens Grassroot Communities"
       siteName: "Athensact"
