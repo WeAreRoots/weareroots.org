@@ -350,6 +350,38 @@ ul.community-maintainers {
   }
 }
 
+footer {
+  min-height: 140px;
+  background-color: $main-color;
+  p, a {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 0;
+  }
+  a:hover {
+    color: #fff;
+  }
+
+  .left-copy {
+    margin-top: 80px;
+  }
+
+  .contribute-statement {
+    margin-top: 100px;
+    @media (max-width: 1200px) {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .github {
+      margin-top: -6px;
+      margin-right: 10px;
+    }
+  }
+
+}
+
+
 .modal {
   .modal-header {
     border-bottom: 0;
