@@ -42,13 +42,14 @@ Front.prototype.init = function () {
  */
 Front.prototype._fixPanels = function () {
   var max = 0;
-  $('.panel-info').each(function () {
+  var panel = $('.panel-info');
+  panel.each(function () {
     var currentHeight = $(this).height();
     if (currentHeight > max) {
       max = currentHeight;
     }
   });
-  $('.panel-info').height(max);
+  panel.height(max);
 };
 
 /**
@@ -122,12 +123,9 @@ Front.prototype._assignValues = function ($item, item) {
   } else {
     location = truncatedVenue || '';
   }
-  // $item.find('.agenda-tpl-address span').html(location);
 
   if (truncatedVenue) {
     $item.find('span.tpl-venue-copy').html(' @' + location);
-  } else {
-    // $item.find('.agenda-tpl-venue').addClass('hide');
   }
 
   if (data.infoUrl) {
@@ -240,7 +238,6 @@ Front.prototype._showMapModal = function () {
   var geocodeEndpoint = 'https://maps.googleapis.com/maps/api/geocode/json?address=' +
                         encodeURIComponent(canonicalAddress);
 
-  var that = this;
   /**
    * @todo: Add a loader/spinner here
    */
