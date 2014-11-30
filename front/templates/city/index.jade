@@ -109,7 +109,7 @@ block content
                     h3.community-title #{ community.name }
               div.col-lg-7
                 div.community-details
-                  h4.community-meetup-frequency #{ community.period }
+                  //- h4.community-meetup-frequency #{ community.period }
                   h4.community-details-subtitle #{ __('front-communities-whatwedo') }
                   p.community-details-subcontent #{ community.description }
                   h4.community-details-subtitle #{ __('front-communities-ourmaintainers') }
@@ -129,6 +129,23 @@ block content
                   p.community-details-subcontent
                     a(href="#{ community.website }", target="_blank") #{ community.website }
           hr
+  footer
+    div.container
+      div.row
+        div.col-lg-8.left-copy
+          p &copy; 2014&nbsp;
+            a(href="https://github.com/WeAreTech/wearetech.io/graphs/contributors") WeAreRoots contributors
+            |  source under the&nbsp;
+            a(target="_blank", href="https://github.com/WeAreTech/wearetech.io/blob/master/LICENSE") MPL 2.0 License
+            | .
+          p.license The content property of their respective owners, the rest&nbsp;
+            a(target="_blank", href="http://creativecommons.org/publicdomain/zero/1.0/") Creative Commons CC0
+            | .
+        div.col-lg-4.contribute-statement
+          p
+            a(href="https://github.com/WeAreRoots/weareroots.org", target="_blank")
+              img(src="/img/github.png").github
+              | View the source of this site and contribute
   div.modal.fade#findParking(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
     div.modal-dialog
       div.modal-content
