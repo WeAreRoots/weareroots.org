@@ -56,8 +56,11 @@ Community.prototype.sanitizeResults = function(results) {
  * @param {mongoose.Document} item The item.
  */
 Community.prototype.sanitizeResult = function(item) {
+  if (!item) {
+    return item;
+  }
   if (!item.toPublic) {
-    if (item.id) {
+    if (item._id) {
       return this._sanitizeObject(item);
     } else {
       return item;
@@ -82,11 +85,6 @@ Community.prototype._sanitizeObject = function(item) {
   // hack to properly format date
   if (item.createdAt && typeof item.createdAt.toISOString === 'function') {
     item.createdAt = item.createdAt.toISOString();
-  }
-
-  if (item.group) {
-    delete item.group._id;
-    delete item.group.__v;
   }
 
   return item;
