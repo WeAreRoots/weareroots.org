@@ -42,13 +42,14 @@ Front.prototype.init = function () {
  */
 Front.prototype._fixPanels = function () {
   var max = 0;
-  $('.panel-info').each(function () {
+  var panel = $('.panel-info');
+  panel.each(function () {
     var currentHeight = $(this).height();
     if (currentHeight > max) {
       max = currentHeight;
     }
   });
-  $('.panel-info').height(max);
+  panel.height(max);
 };
 
 /**
@@ -122,12 +123,9 @@ Front.prototype._assignValues = function ($item, item) {
   } else {
     location = truncatedVenue || '';
   }
-  // $item.find('.agenda-tpl-address span').html(location);
 
   if (truncatedVenue) {
     $item.find('span.tpl-venue-copy').html(' @' + location);
-  } else {
-    // $item.find('.agenda-tpl-venue').addClass('hide');
   }
 
   if (data.infoUrl) {
@@ -154,7 +152,7 @@ Front.prototype._assignValues = function ($item, item) {
     $item.find('.agenda-tpl-language').addClass('hide');
   }
 
-  if(item.location)
+  if (item.location)
     $item.find('.show-map').attr('data-location', item.location);
   else
     $item.find('.show-map').addClass('hide');
@@ -240,7 +238,6 @@ Front.prototype._showMapModal = function () {
   var geocodeEndpoint = 'https://maps.googleapis.com/maps/api/geocode/json?address=' +
                         encodeURIComponent(canonicalAddress);
 
-  var that = this;
   /**
    * @todo: Add a loader/spinner here
    */
@@ -250,7 +247,7 @@ Front.prototype._showMapModal = function () {
       var center = new google.maps.LatLng(target.geometry.location.lat, target.geometry.location.lng);
 
       var mapOptions = {
-        zoom: 16,
+        zoom: 20,
         center: center
       };
 
@@ -263,16 +260,29 @@ Front.prototype._showMapModal = function () {
         title: venueName + ' - ' + canonicalAddress
       });
 
+      $.get('http://skg.localhost:3006/parking-spots.json', function (data) {
+        data.forEach(function (el) {
+          new google.maps.Marker({
+            position: new google.maps.LatLng(el.lng, el.lat),
+            map: map,
+            icon: 'img/parking-marker.png'
+          });
+        });
+      });
+
     }
 
-    /**
-     * Open modal and do super duper hack
-     * @see https://stackoverflow.com/questions/11742839/showing-a-google-map-in-a-modal-created-with-twitter-bootstrap/11743005
-     */
     $('#findParking').modal({}).on('shown.bs.modal', function () {
       $(this).find('.venue').text(venueName + ' - ' + canonicalAddress);
-      google.maps.event.trigger(map, 'resize');
-      map.setCenter(center);
+
+      /**
+       * Open modal and do super duper hack
+       * @see https://stackoverflow.com/questions/11742839/showing-a-google-map-in-a-modal-created-with-twitter-bootstrap/11743005
+       */
+      if (map) {
+        google.maps.event.trigger(map, 'resize');
+        map.setCenter(center);
+      }
     });
   });
 };
