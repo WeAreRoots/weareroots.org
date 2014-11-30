@@ -8,42 +8,41 @@ include ../mixins/navbar.mix.jade
 block content
 
   div.city-header
-    div.row
-      div.col-lg-12
-        div.jumbotron.text-center.city-image-wrapper
-          img(src="#{ city.coverImage }").city-image
-          div.city-image-gradient
-          //- mixin navbarFixed
-          div.navbar.navbar-transparent
-            div.container
-              div.navbar-header
-                button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target=".navbar-collapse")
-                  span.sr-only(Toggle navigation)
-                  span.icon-bar
-                  span.icon-bar
-                  span.icon-bar
-              div.navbar-collapse.collapse
-                ul.nav.navbar-nav.nav-transparent
-                  li.active
-                    a(href="#calendar") #{ __('front-nav-calendar') }
-                  li
-                    a(href="#communities") #{ __('front-nav-communities') }
-                  li
-                    a(href="#contact") #{ __('front-nav-contact') }
-          div.container
-            div.row
-              div.col-lg-6.col-lg-offset-3
-                div.city-name
-                  h1 #{ city.headerTitle }
-                  p.lead #{ __('front-tagline') }
-                div.social-share
-                  ul.nav
-                    li(style="margin-top:-7px;")
-                      div(data-href="http://#{ city.hostname }", data-layout="button_count", data-action="like", data-show-faces="false", data-share="false", data-width="200").fb-like
-                    li
-                      a(href="https://twitter.com/share", data-url="http://#{ city.hostname }", data-text="#{ city.name }", data-size="medium", via="#{ city.twitter }" related="#{ city.twitter }").twitter-share-button Tweet
-                    li
-                      div(data-action="share", data-annotation="bubble", data-href="http://#{ city.hostname }").g-plus
+    img(src="#{ city.coverImage }").city-image
+    div.jumbotron.text-center.city-image-wrapper
+
+      div.city-image-gradient
+      //- mixin navbarFixed
+      div.navbar.navbar-transparent
+        div.container
+          div.navbar-header
+            button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target=".navbar-collapse")
+              span.sr-only(Toggle navigation)
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+          div.navbar-collapse.collapse
+            ul.nav.navbar-nav.nav-transparent
+              li.active
+                a(href="#calendar") #{ __('front-nav-calendar') }
+              li
+                a(href="#communities") #{ __('front-nav-communities') }
+              li
+                a(href="#contact") #{ __('front-nav-contact') }
+      div.container
+        div.row
+          div.col-lg-6.col-lg-offset-3
+            div.city-name
+              h1 THESSALONIKI
+              p.lead #{ __('front-tagline') }
+            div.social-share
+              ul.nav
+                li(style="margin-top:-7px;")
+                  div(data-href="http://#{ city.hostname }", data-layout="button_count", data-action="like", data-show-faces="false", data-share="false", data-width="200").fb-like
+                li
+                  a(href="https://twitter.com/share", data-url="http://#{ city.hostname }", data-text="#{ city.name }", data-size="medium", via="#{ city.twitter }" related="#{ city.twitter }").twitter-share-button Tweet
+                li
+                  div(data-action="share", data-annotation="bubble", data-href="http://#{ city.hostname }").g-plus
 
   div.city-events#calendar
     div.container
