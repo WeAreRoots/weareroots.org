@@ -250,7 +250,7 @@ Front.prototype._showMapModal = function () {
       var center = new google.maps.LatLng(target.geometry.location.lat, target.geometry.location.lng);
 
       var mapOptions = {
-        zoom: 20,
+        zoom: 16,
         center: center
       };
 
@@ -263,7 +263,7 @@ Front.prototype._showMapModal = function () {
         title: venueName + ' - ' + canonicalAddress
       });
 
-      $.get('/assets/parking-spots.json', function (data) {
+      $.get('/parking-spots.json', function (data) {
         data.forEach(function (el) {
           new google.maps.Marker({
             position: new google.maps.LatLng(el.lng, el.lat),
