@@ -62,6 +62,9 @@ Community.prototype.init = BPromise.method(function() {
   this.schema.index({createdOn: 1});
   this.schema.index({cityOwner: 1});
 
+  // define methods
+  this.schema.methods.toPublic = this._toPublic;
+
   // initialize model
   this.Model = mongoose.model(Model.Collection.COMMUNITY, this.schema);
 });
