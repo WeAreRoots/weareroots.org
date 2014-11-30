@@ -263,7 +263,7 @@ Front.prototype._showMapModal = function () {
         title: venueName + ' - ' + canonicalAddress
       });
 
-      $.get('http://skg.localhost:3006/parking-spots.json', function (data) {
+      $.get('/assets/parking-spots.json', function (data) {
         data.forEach(function (el) {
           new google.maps.Marker({
             position: new google.maps.LatLng(el.lng, el.lat),
