@@ -33,8 +33,6 @@ Front.prototype.init = function () {
     this.calendarth.fetch(this._handleCalResult.bind(this));
   }
 
-  // this._fixPanels();
-
   $('body').on('click', '.show-map', this._showMapModal);
 };
 
@@ -44,8 +42,11 @@ Front.prototype.init = function () {
  * @private
  */
 Front.prototype._fixPanels = function () {
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    return;
+  }
   var max = 0;
-  var panel = $('.panel-info');
+  var panel = $('.calendar-item-content');
   panel.each(function () {
     var currentHeight = $(this).height();
     if (currentHeight > max) {
@@ -92,6 +93,8 @@ Front.prototype._handleCalResult = function (err, data) {
 
   elements += '</div>';
   this.$agendaContainer.append(elements);
+
+  this._fixPanels();
 };
 
 /**
