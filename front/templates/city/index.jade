@@ -10,7 +10,7 @@ block content
   div.city-header
     picture
       source(srcset="#{city.coverImage}",media="(min-width: 768px)")
-      img(srcset="#{city.coverImageSm}",alt="cover photo").city-image
+      img(srcset="#{city.coverImageSm}",alt="#{city.headerTitle}").city-image
     div.jumbotron.text-center.city-image-wrapper
       div.city-image-gradient
       div.navbar.navbar-transparent.navbar-default

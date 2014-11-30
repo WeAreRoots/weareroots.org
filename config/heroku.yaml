@@ -37,6 +37,7 @@ data:
     lang: "gr"
     calendarStyle: "roots"
     coverImage: "/assets/city-headers/thessaloniki.jpg"
+    coverImageSm: "/assets/city-headers/thessaloniki-sm.jpg"
     curators:
       - name: "Thanasis Polychronakis"
       email: "thanpolas@gmail.com"
@@ -62,6 +63,7 @@ data:
     lang: "gr"
     calendarStyle: "google"
     coverImage: "/assets/city-headers/athens.jpg"
+    coverImageSm: "/assets/city-headers/athens-sm.jpg"
     curators:
       - name: "Thanasis Polychronakis"
       email: "thanpolas@gmail.com"
