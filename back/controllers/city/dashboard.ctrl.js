@@ -31,9 +31,6 @@ Dashboard.prototype._useIndex = function(req, res) {
   req.i18n.setLocale(req.city.lang);
 
   res.render('city/dashboard', {
-    og: null, // title, site_name, url, description, image, appId, type
-    pageTitle: null,
-    ga: null, // GA id
-    gaSite: null, // Canonical GA website name
+    reqPath: req.path
   });
 };

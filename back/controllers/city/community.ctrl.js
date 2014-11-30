@@ -48,7 +48,9 @@ var Community = module.exports = ControllerBase.extendSingleton(function () {
  * @param {Object} res The response Object.
  */
 Community.prototype._add = function(req, res) {
-  res.render('/city/community/add');
+  res.render('city/community/add', {
+    reqPath: req.path
+  });
 };
 
 /**
@@ -58,7 +60,9 @@ Community.prototype._add = function(req, res) {
  * @param {Object} res The response Object.
  */
 Community.prototype._del = function(req, res) {
-  res.render('/city/community/del');
+  res.render('/city/community/del', {
+    reqPath: req.path
+  });
 };
 
 /**
@@ -68,5 +72,7 @@ Community.prototype._del = function(req, res) {
  * @param {Object} res The response Object.
  */
 Community.prototype._edit = function(req, res) {
-  res.render('/city/community/edit');
+  res.render('/city/community/edit', {
+    reqPath: req.path
+  });
 };
