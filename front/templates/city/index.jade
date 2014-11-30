@@ -11,7 +11,7 @@ block content
     div.row
       div.col-lg-12
         div.jumbotron.text-center.city-image-wrapper
-          img(src="/assets/header-city.png").city-image
+          img(src="#{ city.coverImage }").city-image
           div.city-image-gradient
           //- mixin navbarFixed
           div.navbar.navbar-transparent
@@ -34,7 +34,7 @@ block content
             div.row
               div.col-lg-6.col-lg-offset-3
                 div.city-name
-                  h1 THESSALONIKI
+                  h1 #{ city.headerTitle }
                   p.lead #{ __('front-tagline') }
                 div.social-share
                   ul.nav
@@ -62,9 +62,13 @@ block content
               img(src="/img/submit-event.png")
               | &nbsp;#{ __('front-calendar-howtosubmit') }
     div#agenda-items.container.calendar-items-block
-      div.row
-        div.col-lg-10.col-md-10
-          img(src="/img/loader-bar.gif")
+      if city.calendarStyle === 'roots'
+        div.row
+          div.col-lg-10.col-md-10
+            img(src="/img/loader-bar.gif")
+      else
+        div.responsive-iframe-container
+          iframe(src="https://www.google.com/calendar/embed?src=#{ city.calendarUrl }&ctz=Europe/Athens", style="border: 0", frameborder="0", scrolling="no")
 
     div#agenda-tpl.hide
       div.col-md-4.col-lg-4.calendar-item-outer
@@ -128,24 +132,7 @@ block content
                   h4.community-details-subtitle #{ __('front-communities-learnmore') }
                   p.community-details-subcontent
                     a(href="#{ community.website }", target="_blank") #{ community.website }
-          hr
-  footer
-    div.container
-      div.row
-        div.col-lg-8.left-copy
-          p &copy; 2014&nbsp;
-            a(href="https://github.com/WeAreTech/wearetech.io/graphs/contributors") WeAreRoots contributors
-            |  source under the&nbsp;
-            a(target="_blank", href="https://github.com/WeAreTech/wearetech.io/blob/master/LICENSE") MPL 2.0 License
-            | .
-          p.license The content property of their respective owners, the rest&nbsp;
-            a(target="_blank", href="http://creativecommons.org/publicdomain/zero/1.0/") Creative Commons CC0
-            | .
-        div.col-lg-4.contribute-statement
-          p
-            a(href="https://github.com/WeAreRoots/weareroots.org", target="_blank")
-              img(src="/img/github.png").github
-              | View the source of this site and contribute
+
   div.modal.fade#findParking(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
     div.modal-dialog
       div.modal-content
