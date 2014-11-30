@@ -260,7 +260,9 @@ Front.prototype._showMapModal = function () {
       var marker = new google.maps.Marker({
         position: center,
         map: map,
-        title: venueName + ' - ' + canonicalAddress
+        title: venueName + ' - ' + canonicalAddress,
+        zIndex: 99999
+
       });
 
       $.get('/parking-spots.json', function (data) {
