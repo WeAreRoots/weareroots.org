@@ -380,3 +380,14 @@ ul.community-maintainers {
     height: 657px;
   }
 }
+
+
+// responsive how-to-submit-event button
+@media (max-width: 450px) {
+  .submit-event {
+    padding: 8px 20px 12px 0;
+  }
+  .submit-event img {
+    width: 40px;
+  }
+}
