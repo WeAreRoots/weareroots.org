@@ -105,34 +105,35 @@ block content
       while i <= communities.length
         - i += 2
         each community in communities.slice(i, i + 2)
-          div.container.community
-            div.row
-              div.col-lg-3
-                div.community-img
-                  div.community-gradient
-                    h3.community-title #{ community.name }
-              div.col-lg-7
-                div.community-details
-                  //- h4.community-meetup-frequency #{ community.period }
-                  h4.community-details-subtitle #{ __('front-communities-whatwedo') }
-                  p.community-details-subcontent #{ community.description }
-                  h4.community-details-subtitle #{ __('front-communities-ourmaintainers') }
-                  p.community-details-subcontent
-                    ul.community-maintainers
-                      each maintainer, index in community.maintainers
-                        li
-                          if index > 0
-                            |,
-                          if maintainer.email
-                            a(href="mailto:#{ maintainer.email }") #{ maintainer.name }
-                          else if maintainer.website
-                            a(href="#{ maintainer.website }") #{ maintainer.name }
-                          else
-                            | #{ maintainer.name }
-                  h4.community-details-subtitle #{ __('front-communities-learnmore') }
-                  p.community-details-subcontent
-                    a(href="#{ community.website }", target="_blank") #{ community.website }
-          hr
+          if  community.name && community.description && community.website
+            div.container.community
+              div.row
+                div.col-lg-3
+                  div.community-img
+                    div.community-gradient
+                      h3.community-title #{ community.name }
+                div.col-lg-7
+                  div.community-details
+                    //- h4.community-meetup-frequency #{ community.period }
+                    h4.community-details-subtitle #{ __('front-communities-whatwedo') }
+                    p.community-details-subcontent #{ community.description }
+                    h4.community-details-subtitle #{ __('front-communities-ourmaintainers') }
+                    p.community-details-subcontent
+                      ul.community-maintainers
+                        each maintainer, index in community.maintainers
+                          li
+                            if index > 0
+                              |,
+                            if maintainer.email
+                              a(href="mailto:#{ maintainer.email }") #{ maintainer.name }
+                            else if maintainer.website
+                              a(href="#{ maintainer.website }") #{ maintainer.name }
+                            else
+                              | #{ maintainer.name }
+                    h4.community-details-subtitle #{ __('front-communities-learnmore') }
+                    p.community-details-subcontent
+                      a(href="#{ community.website }", target="_blank") #{ community.website }
+            hr
 
   div.modal.fade#findParking(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
     div.modal-dialog
