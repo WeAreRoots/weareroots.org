@@ -6,6 +6,9 @@
 var ControllerBase = require('nodeon-base').ControllerBase;
 
 var CommunityMidd = require('../../middleware/communities.midd');
+var globals = require('../../core/globals');
+var AuthMidd = require('../../middleware/auth.midd');
+var authMidd = new AuthMidd(globals.Roles.CITY);
 
 // var CommunitiesEnt = require('../../entities/community.ent');
 
@@ -17,8 +20,10 @@ var CommunityMidd = require('../../middleware/communities.midd');
  */
 var Dashboard = module.exports = ControllerBase.extendSingleton(function(){
   var communityMidd = CommunityMidd.getInstance();
-  this.use.push(communityMidd.populate.bind(communityMidd));
+  var auth = authMidd.requiresAuth.bind(authMidd);
 
+  this.use.push(auth('dashboard'));
+  this.use.push(communityMidd.populate.bind(communityMidd));
   this.use.push(this._useIndex.bind(this));
 });
 /**

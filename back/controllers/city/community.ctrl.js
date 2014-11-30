@@ -8,6 +8,9 @@ var CrudeEntity = require('crude-entity');
 
 var CommunityEnt = require('../../entities/community.ent');
 var CommunityMidd = require('../../middleware/communities.midd');
+var globals = require('../../core/globals');
+var AuthMidd = require('../../middleware/auth.midd');
+var authMidd = new AuthMidd(globals.Roles.CITY);
 
 /**
  * Communities CRUD controller.
@@ -27,15 +30,23 @@ var Community = module.exports = ControllerBase.extendSingleton(function () {
   });
 
   var communityMidd = CommunityMidd.getInstance();
+  var auth = authMidd.requiresAuth.bind(authMidd);
+
+  this.crude.create.use(auth('communityCreate'));
+  this.crude.update.use(auth('communityUpdate'));
+  this.crude.delete.use(auth('communityDelete'));
 
   this.add = [
+    auth('communityCreateForm'),
     this._add.bind(this),
   ];
   this.del = [
+    auth('communityDelForm'),
     communityMidd.populateSingleFromParam.bind(communityMidd),
     this._del.bind(this),
   ];
   this.edit = [
+    auth('communityEditForm'),
     communityMidd.populateSingleFromParam.bind(communityMidd),
     this._edit.bind(this),
   ];
