@@ -8,11 +8,11 @@ include ../mixins/navbar.mix.jade
 block content
 
   div.city-header
-    img(src="#{ city.coverImage }").city-image
+    picture
+      source(srcset="/assets/city-headers/thessaloniki.jpg",media="(min-width: 768px)")
+      img(srcset="/assets/city-headers/thessaloniki-sm.jpg",alt="cover photo")
     div.jumbotron.text-center.city-image-wrapper
-
       div.city-image-gradient
-      //- mixin navbarFixed
       div.navbar.navbar-transparent
         div.container
           div.navbar-header
