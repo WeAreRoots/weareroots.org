@@ -29,6 +29,7 @@ Home.prototype._useIndex = function(req, res) {
   req.i18n.setLocale(req.city.lang);
 
   res.render('city/index', {
+    isCity: true,
     og: null, // title, site_name, url, description, image, appId, type
     pageTitle: null,
     ga: null, // GA id
