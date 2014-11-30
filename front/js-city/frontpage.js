@@ -154,7 +154,7 @@ Front.prototype._assignValues = function ($item, item) {
     $item.find('.agenda-tpl-language').addClass('hide');
   }
 
-  if(item.location)
+  if (item.location)
     $item.find('.show-map').attr('data-location', item.location);
   else
     $item.find('.show-map').addClass('hide');
@@ -250,7 +250,7 @@ Front.prototype._showMapModal = function () {
       var center = new google.maps.LatLng(target.geometry.location.lat, target.geometry.location.lng);
 
       var mapOptions = {
-        zoom: 16,
+        zoom: 20,
         center: center
       };
 
@@ -263,16 +263,29 @@ Front.prototype._showMapModal = function () {
         title: venueName + ' - ' + canonicalAddress
       });
 
+      $.get('http://skg.localhost:3006/parking-spots.json', function (data) {
+        data.forEach(function (el) {
+          new google.maps.Marker({
+            position: new google.maps.LatLng(el.lng, el.lat),
+            map: map,
+            icon: 'img/parking-marker.png'
+          });
+        });
+      });
+
     }
 
-    /**
-     * Open modal and do super duper hack
-     * @see https://stackoverflow.com/questions/11742839/showing-a-google-map-in-a-modal-created-with-twitter-bootstrap/11743005
-     */
     $('#findParking').modal({}).on('shown.bs.modal', function () {
       $(this).find('.venue').text(venueName + ' - ' + canonicalAddress);
-      google.maps.event.trigger(map, 'resize');
-      map.setCenter(center);
+
+      /**
+       * Open modal and do super duper hack
+       * @see https://stackoverflow.com/questions/11742839/showing-a-google-map-in-a-modal-created-with-twitter-bootstrap/11743005
+       */
+      if (map) {
+        google.maps.event.trigger(map, 'resize');
+        map.setCenter(center);
+      }
     });
   });
 };
