@@ -1,0 +1,45 @@
+extends ../layout/dashboard
+
+block content
+  h1.page-header Community > New
+  h2.sub-header
+  //- div.form-wrapper
+  form.form-horizontal
+    fieldset
+
+      legend Add new community
+
+      div.form-group
+        label.col-md-4.control-label(for="communityname") Name
+        div.col-md-4
+          input#communityname.textinput(name="communityname" placeholder="e.g. Bootstrap Friends" required="" type="text")
+
+      div.form-group
+        label.col-md-4.control-label(for="communitydescription") Description
+        div.col-md-4
+          textarea.communitydescription(name="communitydescription")
+
+      div.form-group
+        label.col-md-4.control-label(for="communitywebsite") Website
+        div.col-md-4
+          input#communitywebsite.textinput(name="communitywebsite" placeholder="" type="text")
+
+      div.form-group
+        label.col-md-4.control-label(for="communityfacebook") Facebook Link
+        div.col-md-4
+          input#communityfacebook.textinput(name="communityfacebook" placeholder="" type="text")
+
+      div.form-group
+        label.col-md-4.control-label(for="communitytwitter") Twitter Link
+        div.col-md-4
+          input#communitytwitter.textinput(name="communitytwitter" placeholder="" type="text")
+
+      div.form-group
+        label.col-md-4.control-label(for="communityimage") Logo/Image
+        div.col-md-4
+          input#communityimage.textinput(name="communityimage" placeholder="image url" type="text")
+
+      div.form-group
+        label.col-md-4.control-label(for="communitybutton")
+        div.col-md-4
+          button#communitybutton.btn.btn-primary(name="communitybutton") Create
