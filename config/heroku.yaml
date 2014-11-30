@@ -43,3 +43,23 @@ data:
       appId: ""
       type: "website"
     ga: "UA-41787746-7"
+data:
+  city:
+    - name: "Athens"
+    headerTitle: "ΑΘΗΝΑ"
+    hostname: "ath.thesact.gr"
+    domainName: "ath.thesact.gr"
+    calendarUrl: "2ul10sd9g30mnk1vpmcnnp5qv4@group.calendar.google.com"
+    calendarApiKey: "AIzaSyC75rnKyEkGxmVyG7hlqFicwPBgDmQLN_w"
+    lang: "gr"
+    calendarStyle: "google"
+    og:
+      title: "Athens Grassroot Communities"
+      siteName: "Athensact"
+      url: "ath.thesact.gr"
+      description: "Athens Grassroot Communities"
+      image: ""
+      appId: ""
+      type: "website"
+    ga: "xxx"
+
