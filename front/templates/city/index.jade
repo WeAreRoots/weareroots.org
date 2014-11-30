@@ -62,9 +62,13 @@ block content
               img(src="/img/submit-event.png")
               | &nbsp;#{ __('front-calendar-howtosubmit') }
     div#agenda-items.container.calendar-items-block
-      div.row
-        div.col-lg-10.col-md-10
-          img(src="/img/loader-bar.gif")
+      if city.calendarStyle === 'roots'
+        div.row
+          div.col-lg-10.col-md-10
+            img(src="/img/loader-bar.gif")
+      else
+        div.responsive-iframe-container
+          iframe(src="https://www.google.com/calendar/embed?src=#{ city.calendarUrl }&ctz=Europe/Athens", style="border: 0", frameborder="0", scrolling="no")
 
     div#agenda-tpl.hide
       div.col-md-4.col-lg-4.calendar-item-outer
