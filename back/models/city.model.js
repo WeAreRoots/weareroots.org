@@ -43,6 +43,7 @@ City.Schema = {
     email: {type: String},
   }],
   coverImage: {type: String},
+  coverImageSm: {type: String},
   calendarStyle: {
     type: String,
     enum: ['roots', 'google'],
