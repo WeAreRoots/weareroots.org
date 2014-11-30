@@ -78,9 +78,9 @@ ExpressApp.prototype.init = BPromise.method(function(opts) {
     this.app.set('x-powered-by', false);
 
     // Require Basic auth if on heroku
-    if (globals.isHeroku) {
-      this.app.use(authMidd.basicAuth);
-    }
+    // if (globals.isHeroku) {
+    //   this.app.use(authMidd.basicAuth);
+    // }
 
     this.app.use(cookieParser());
     this.app.use(bodyParser.urlencoded({extended: false}));
