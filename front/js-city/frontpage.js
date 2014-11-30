@@ -29,8 +29,11 @@ Front.prototype.init = function () {
     maxResults: 12
   });
 
-  this.calendarth.fetch(this._handleCalResult.bind(this));
-  this._fixPanels();
+  if (serv.calendarStyle === 'roots') {
+    this.calendarth.fetch(this._handleCalResult.bind(this));
+  }
+
+  // this._fixPanels();
 
   $('body').on('click', '.show-map', this._showMapModal);
 };
