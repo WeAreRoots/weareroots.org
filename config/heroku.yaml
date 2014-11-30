@@ -56,7 +56,7 @@ data:
     - name: "Athens"
     headerTitle: "ΑΘΗΝΑ"
     hostname: "ath.weareroots.org"
-    domainName: "ath.weareroots.org"
+    domainName: "weareroots.org"
     calendarUrl: "2ul10sd9g30mnk1vpmcnnp5qv4@group.calendar.google.com"
     calendarApiKey: "AIzaSyC75rnKyEkGxmVyG7hlqFicwPBgDmQLN_w"
     lang: "gr"
